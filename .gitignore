@@ -1,2 +1,13 @@
-# Removes secrets.py from git
-src/config/secrets.py
+# Removes secrets.py from git.
+# src/config/secrets.py
+
+# Python virtual environment.
+.venv
+
+# User specific files.
+data/saves
+data/sheets
+.vscode
+
+# Removes the webdrivers from git.
+chrome-win64
