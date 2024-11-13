@@ -1,0 +1,2 @@
+# Removes secrets.py from git
+src/config/secrets.py
