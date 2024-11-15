@@ -23,3 +23,9 @@ vbs_end_date = '00-00-00'
 
 vbs_start_date = datetime.strptime(vbs_start_date, '%m-%d-%y').date()
 vbs_end_date = datetime.strptime(vbs_end_date, '%m-%d-%y').date()
+
+# URLS for the intercommerce system.
+# We place these in secrets because the URL contain sensitive information.
+intercommerce_urls = dict({
+
+})
