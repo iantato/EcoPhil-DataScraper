@@ -1,5 +1,5 @@
 # Removes secrets.py from git.
-# src/config/secrets.py
+src/config/secrets.py
 
 # Python virtual environment.
 .venv
