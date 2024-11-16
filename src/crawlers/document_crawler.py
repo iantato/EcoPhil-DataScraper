@@ -4,7 +4,7 @@ from selenium.common.exceptions import NoSuchElementException
 
 from crawlers import driver, wait
 from handlers.error_handler import intercommerce_login_error
-from pipelines.validate_data import (validate_if_date_after, validate_if_date_before, validate_data_status,
+from src.handlers.validate_data import (validate_if_date_after, validate_if_date_before, validate_data_status,
                                      is_released, is_transferred, is_approved)
 from config.secrets import intercommerce_urls
 
