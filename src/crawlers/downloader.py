@@ -3,7 +3,7 @@ from datetime import date, timedelta
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
 
-from config.settings import DATA_DIR, SLEEP_DELAY
+from config.settings import DATA_DIR
 from crawlers import driver, wait
 from handlers.error_handler import csv_wait_and_retry, vbs_login_error
 from handlers.file_handler import move_file

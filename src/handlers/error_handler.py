@@ -7,7 +7,7 @@ from selenium.common.exceptions import TimeoutException
 
 from crawlers import driver, wait
 from config.settings import SLEEP_DELAY
-from config.secrets import vbs_credentials
+from config.secrets import vbs_credentials, intercommerce_credentials
 
 # CSV file download handler.
 def csv_wait_and_retry(delay = 100, retries = 3) -> None:
@@ -41,5 +41,25 @@ def vbs_login_error(retries = 3) -> None:
             return
         except TimeoutException:
             print(f'Attempt {attempt + 1} failed; Wrong Password...')
+            vbs_credentials['username'] = input('Enter new username: ')
             vbs_credentials['password'] = input('Enter new password: ')
             continue
+
+    print(f'Failed to login into vbs.1-stop.biz after {retries} retries.')
+
+def intercommerce_login_error(retries = 3) -> None:
+    for attempt in range(retries):
+        wait.until(EC.element_to_be_clickable((By.NAME, 'clientid'))).send_keys(intercommerce_credentials['username'])
+        wait.until(EC.element_to_be_clickable((By.NAME, 'password'))).send_keys(intercommerce_credentials['password'])
+
+        # Login.
+        wait.until(EC.presence_of_element_located((By.NAME, 'form1'))).submit()
+
+        sleep(SLEEP_DELAY)
+        if (driver.title != "InterCommerce Network Services - Member's Page"):
+            print(f'Attempt {attempt + 1} failed; Wrong Password...')
+            intercommerce_credentials['username'] = input('Enter new username: ')
+            intercommerce_credentials['password'] = input('Enter new password: ')
+            continue
+        else:
+            return
